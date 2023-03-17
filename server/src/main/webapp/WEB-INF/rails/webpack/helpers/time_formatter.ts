@@ -44,14 +44,10 @@ class Cache implements _.MapCache {
   }
 
   delete(key: any) {
-    if (this.lru.has(key)) {
-      this.lru.del(key);
-      return true;
-    }
-    return false;
+    return this.lru.delete(key);
   }
 
-  clear() { this.lru.reset(); }
+  clear() { this.lru.clear(); }
 }
 
 const format = _.memoize((time) => {
